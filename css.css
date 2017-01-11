@@ -1,0 +1,303 @@
+head,body
+{
+	width: 100%;
+	margin:0;
+	padding:0;
+	-webkit-font-smoothing: antialiased;
+}
+* {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition:    all 0.2s ease;
+    -ms-transition:     all 0.2s ease;
+    -o-transition:      all 0.2s ease;
+    transition:      all 0.2s ease;
+}
+body {
+    background-image: url("bg-howling-abyss.jpg");
+    -webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+#leaderView {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    color: #eee;
+    width: 100%;
+    padding-bottom: 13px;
+    background-color: rgba(31,27,27,.75);
+}
+
+#leaderView h1 {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    text-decoration: none;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background-color: rgba(31,27,27,.75);
+    padding-bottom: 10px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+nav * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+nav a {
+    padding: 0.8em;
+    display: inline-block;
+    color: #eee;
+    position: relative;
+    text-decoration: none;
+    margin: 0 2.5%;
+    font-weight: bold;
+    
+}
+
+nav a:before,
+nav a:after {
+    height: 14px;
+    width: 20px;
+    position: absolute;
+    content: '';
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    opacity: 0;
+    /*border-bottom-right-radius: 2em;
+    border-top-left-radius: 2em;*/
+}
+
+nav a:before {
+    left: 0;
+    top: 0;
+    border-left: 3px solid #eee;
+    border-top: 3px solid #eee;
+    -webkit-transform: translate(100%, 50%);
+    transform: translate(100%, 50%);
+}
+
+nav a:after {
+    right: 0;
+    bottom: 0;
+    border-right: 3px solid #eee;
+    border-bottom: 3px solid #eee;
+    -webkit-transform: translate(-100%, -50%);
+    transform: translate(-100%, -50%);
+}
+
+nav a:hover,
+nav a.active {
+    color: #eee;
+}
+
+nav a:hover:before,
+nav a.active:before,
+nav a:hover:after,
+nav a.active:after {
+    -webkit-transform: translate(0%, 0%);
+    transform: translate(0%, 0%);
+    opacity: 1;
+}
+
+#container {
+    max-width: 100%;
+    margin: 150px auto 100px auto;
+    text-align: center;
+}
+
+#leaderRows {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    vertical-align: middle;
+    margin-top: 5px;
+}
+
+.scoreRow {
+    display: block;
+    width: 400px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 0 10px 0;
+    background-color: #519D9E;
+    cursor: pointer;
+    color: #eee;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 24;
+    box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
+}
+
+.champPic {
+    display: inline-block;
+    background-color: #eee;
+    width: 35px;
+    height: 35px;
+    vertical-align: top;
+    margin: 0 15px 0 0;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.Chosen {
+    position: relative;
+    background-color: #504444;
+    padding-right: 20px;
+    z-index: 1000;
+    height: 50px;
+    line-height: 50px;
+}
+
+.Chosen .champPic {
+    display: inline-block;
+    background-color: #eee;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+}
+
+.chosen .indicator {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    width: 0; 
+    height: 0; 
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent; 
+    border-right:35px solid #eee;
+}
+
+#dataPanel {
+    display: none;
+    text-align: left;
+    background-color: #504444;
+    color: #eee;
+    box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
+    height: 475px;
+    width: 450px;
+    vertical-align: middle;
+    z-index: -1000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+#dataPic {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}
+
+#dataPanel h1, #dataPanel h2 {
+    margin: 0px 0;
+    padding-left: 15px;
+}
+
+#dataPanel h2 {
+    font-weight: 400;
+    font-size: 20px;
+    display: inline-block;
+}
+
+#dataContainer {
+    height: 475px;
+    background-color: rgba(31,27,27,.75);
+}
+
+#dataHeader {
+    margin-bottom: 0px;
+    height: 75px;
+    display: block;
+}
+
+#KDATable, #RateTable {
+    display: table;
+    width: 100%;
+    margin: 0px auto 0px auto;
+}
+
+.infoRow {
+    display: table-row;
+    width: 200%;
+}
+
+.Title {
+    font-size: 20px;
+    /*color: #c0c0c0;*/
+}
+
+.infoRow .infoCell {
+    display: table-cell;
+    text-align: center;
+    width: 225px;
+}
+
+#percTitle .infoCell {
+    display: table-cell;
+    text-align: center;
+    width: 150px;
+}
+
+.dataNumbers {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.infoRow {
+  width: 100%;
+  display: inline-block;
+}
+
+#percRow {
+  width: 100%;
+  display: inline-block;
+}
+
+canvas {
+  position: absolute;
+  display: inline-block;
+}
+
+.infoRow .canvasCont {
+  position: relative;
+  display: inline-block;
+  height: 200px;
+  width: 225px;
+}
+
+#percRow .canvasCont {
+  position: relative;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+}
+
+#percRow .canvasCont h4 {
+  color: #eee;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  margin: 0 auto;
+  line-height: 150px;
+  width: 100%;
+  text-align: center;
+}

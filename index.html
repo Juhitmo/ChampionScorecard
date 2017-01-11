@@ -1,0 +1,38 @@
+<!DOCTYPE = html>
+<html>
+<link rel="stylesheet" type="text/css" href="css.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+
+<body onload='getData();'>
+    <script src="JS.js"></script>
+    <div id='leaderView'>
+        <h1>Top 10 League of Legends Champions</h1>
+        <nav>
+            <a href="#" onclick="setView('Play'); return false;" id='playView' class="view active">By Play Rate</a>
+            <a href="#" onclick="setView('Win'); return false;" id='winView' class="view">By Win Rate</a>
+            <a href="#" onclick="setView('Ban'); return false;" id='banView' class="view" >By Ban Rate</a>
+        <br><br>
+        <!--<h1>Champion Roles</h1>-->
+            <a href="#" onclick="setFilt('All'); return false;" id='allFilt' class="filt active">All Roles</a>
+            <a href="#" onclick="setFilt('Top'); return false;" id='topFilt' class="filt">Top</a>
+            <a href="#" onclick="setFilt('Mid'); return false;" id='midFilt' class="filt" >Middle</a>
+            <a href="#" onclick="setFilt('ADC'); return false;" id='adcFilt' class="filt">ADC</a>
+            <a href="#" onclick="setFilt('Sup'); return false;" id='supFilt' class="filt" >Support</a>
+            <a href="#" onclick="setFilt('Jun'); return false;" id='junFilt' class="filt" >Jungle</a>
+        </nav>
+    </div>
+    <div id='container'>
+        <div id='leaderRows'>
+        </div>
+        <div id='dataPanel'>
+        </div>
+    </div>
+</body>
+
+</html>
