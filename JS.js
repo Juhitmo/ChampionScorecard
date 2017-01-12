@@ -48,7 +48,7 @@ function createRows(){
                 buildRows += "<div id='"+info[x].key+"' class='champPic'>";
                     buildRows += "<img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png' alt='"+info[x].key+"'></img>";
                 buildRows += "</div>";
-                buildRows += (x+1)+" - "+info[x].name+"<div class='indicator' style=''></div>";
+                buildRows += (x+1)+" - "+info[x].name+" <span class='rowRole'>("+info[x].role+")</span> <div class='indicator' style=''></div>";
             buildRows += "</div>";
             y++;
         }
@@ -81,7 +81,8 @@ function showPanel(selected){
         if(info[x].key+info[x].role == chosen){
             $('#dataPanel').css('background-image',"url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+info[x].key+"_0.jpg')");
             //buildPanel += "<div id='dataPic'><img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png'></div>";
-             buildPanel += "<div id='dataContainer'>";   
+             buildPanel += "<div id='dataContainer'>";
+
                 buildPanel += "<div id='dataHeader'>";
                     buildPanel += "<h1 id='panelChar'>"+info[x].name+"</h1>";
                     buildPanel += "<h2 id='panelRole'>"+info[x].role+"</h2>";

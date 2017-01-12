@@ -142,6 +142,13 @@ nav a.active:after {
     font-size: 24;
     box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
 }
+.rowRole
+{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 18;
+    margin-left: 5px;
+}
 
 .champPic {
     display: inline-block;
@@ -181,7 +188,7 @@ img {
     height: 0; 
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent; 
-    border-right:35px solid #eee;
+    border-right: 35px solid #eee;
 }
 
 #dataPanel {
