@@ -41,25 +41,60 @@ function createRows(){
     document.getElementById("leaderRows").innerHTML = "";
     var buildRows = "";
     var y = 0; //champ view counter
+    highestVal = 0; //highest % value, used for row width sizing
+    var charID = [];
+
+    //get filter and view ID's'
+    var viewID = $('.view.active').map(function(){
+                    return this.id;
+                }).get();
+    var filtID = $('.filt.active').map(function(){
+                    return this.id;
+                }).get();
 
     for(var x = 0; x < info.length && y < 10; x++){
         if(role == 'All' || role == info[x].role){
+
+            if(viewID == 'playView'){
+                charID[info[x].key+info[x].role] = info[x].playPercent;
+            } else if(viewID == 'winView') {
+                charID[info[x].key+info[x].role] = info[x].winPercent;
+            }else {
+                charID[info[x].key+info[x].role] = info[x].banPercent;
+            }
+
             buildRows += "<div id='"+info[x].key+info[x].role+"' class='scoreRow'>";
                 buildRows += "<div id='"+info[x].key+"' class='champPic'>";
                     buildRows += "<img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png' alt='"+info[x].key+"'></img>";
                 buildRows += "</div>";
-                buildRows += (x+1)+" - "+info[x].name+" <span class='rowRole'>("+info[x].role+")</span> <div class='indicator' style=''></div>";
+                buildRows += info[x].name+" <span class='rowRole'>("+info[x].role.substring(0,3)+")</span> ";
+                buildRows += "<div class='rateDisp dataNumbers'>"+charID[info[x].key+info[x].role]+"%</div>";
+                buildRows += "<div class='indicator'></div>";
             buildRows += "</div>";
+
+            if(y == 0){
+                highestVal = charID[info[x].key+info[x].role];
+            }
             y++;
         }
     }
     document.getElementById("leaderRows").innerHTML = buildRows;
 
+    //change width of row depending on %
+    var pad = 100; //Math.floor(400 - (400*(highestVal/100)));
+    var wid = 0;
+
+    for (var key in charID){
+        wid = Math.floor(300*(charID[key]/100)) + Math.floor(300 - (300*(highestVal/100)));
+        $("#"+key).width(wid+pad);
+    }    
+
+
     $( document ).ready(function() {
         $('.scoreRow').click(function() {
             if($(this).hasClass('Chosen')){
-                $('.scoreRow').removeClass("Chosen");
-                hidePanel(this);
+                //$('.scoreRow').removeClass("Chosen");
+                hidePanel();
             } else {
                 $('.scoreRow').removeClass("Chosen");
                 $(this).addClass("Chosen");
@@ -81,8 +116,8 @@ function showPanel(selected){
         if(info[x].key+info[x].role == chosen){
             $('#dataPanel').css('background-image',"url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+info[x].key+"_0.jpg')");
             //buildPanel += "<div id='dataPic'><img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png'></div>";
-             buildPanel += "<div id='dataContainer'>";
-
+             buildPanel += "<div id='dataContainer' onclick='hidePanel();'>";
+                buildPanel += "<div id='close'>X</div>";
                 buildPanel += "<div id='dataHeader'>";
                     buildPanel += "<h1 id='panelChar'>"+info[x].name+"</h1>";
                     buildPanel += "<h2 id='panelRole'>"+info[x].role+"</h2>";
@@ -282,7 +317,8 @@ function createRadarChart(data){
     });
 }
 
-function hidePanel(selected){
+function hidePanel(){
+    $('.scoreRow').removeClass("Chosen");
     var chosen = $('.Chosen').html();
     $('#dataPanel').css('display','none');
 }

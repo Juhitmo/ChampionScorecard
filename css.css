@@ -13,7 +13,8 @@ head,body
     transition:      all 0.2s ease;
 }
 body {
-    background-image: url("bg-howling-abyss.jpg");
+    /*background-image: url("bg-howling-abyss.jpg");*/
+    background-color: #222;
     -webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -100,9 +101,8 @@ nav a:after {
     transform: translate(-100%, -50%);
 }
 
-nav a:hover,
 nav a.active {
-    color: #eee;
+    color: #519D9E;
 }
 
 nav a:hover:before,
@@ -130,10 +130,11 @@ nav a.active:after {
 
 .scoreRow {
     display: block;
+    position: relative;
     width: 400px;
     height: 35px;
     line-height: 35px;
-    margin: 0 auto 10px auto;
+    margin: 0 0 10px 0;
     background-color: #519D9E;
     cursor: pointer;
     color: #eee;
@@ -142,12 +143,14 @@ nav a.active:after {
     font-size: 24;
     box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
 }
+
 .rowRole
 {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 18;
-    margin-left: 5px;
+    margin-left: 2px;
+    line-height: 35px;
 }
 
 .champPic {
@@ -163,10 +166,19 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+.rateDisp {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+}
+.Chosen .rateDisp
+{
+    display: none;
+}
 .Chosen {
     position: relative;
     background-color: #376A6B;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
     z-index: 1000;
     height: 50px;
     line-height: 50px;
@@ -188,10 +200,11 @@ img {
     height: 0; 
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent; 
-    border-right: 35px solid #eee;
+    border-right: 20px solid #eee;
 }
 
 #dataPanel {
+    position: relative;
     display: none;
     text-align: left;
     background-color: #504444;
@@ -200,14 +213,21 @@ img {
     height: 475px;
     width: 450px;
     vertical-align: middle;
-    z-index: -1000;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top right;
 }
+#close{
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #eee;
+    cursor: pointer;
 
+}
 #dataPic {
     width: 70px;
     height: 70px;
