@@ -68,7 +68,7 @@ function createRows(){
                     buildRows += "<img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png' alt='"+info[x].key+"'></img>";
                 buildRows += "</div>";
                 buildRows += info[x].name+" <span class='rowRole'>("+info[x].role.substring(0,3)+")</span> ";
-                buildRows += "<div class='rateDisp dataNumbers'>"+charID[info[x].key+info[x].role]+"%</div>";
+                buildRows += "<div id='"+info[x].key+info[x].role+"Perc' class='rateDisp dataNumbers'>"+charID[info[x].key+info[x].role]+"%</div>";
                 buildRows += "<div class='indicator'></div>";
             buildRows += "</div>";
 
@@ -81,23 +81,29 @@ function createRows(){
     document.getElementById("leaderRows").innerHTML = buildRows;
 
     //change width of row depending on %
-    var pad = 100; //Math.floor(400 - (400*(highestVal/100)));
+    var pad = 50; //Math.floor(400 - (400*(highestVal/100)));
     var wid = 0;
 
     for (var key in charID){
-        wid = Math.floor(300*(charID[key]/100)) + Math.floor(300 - (300*(highestVal/100)));
+        //alert("width: "+Math.floor(300*(charID[key]/100))+" added width: "+Math.floor(300 - (300*(highestVal/100))));
+        wid = Math.floor(350*(charID[key]/100)) + Math.floor(350 - (350*(highestVal/100)));
         $("#"+key).width(wid+pad);
+        if((wid+pad) < 230){
+            $("#"+key+"Perc").css("right", "-60");
+        }
     }    
 
-
+    //define actions when row is clicked
     $( document ).ready(function() {
         $('.scoreRow').click(function() {
             if($(this).hasClass('Chosen')){
-                //$('.scoreRow').removeClass("Chosen");
                 hidePanel();
             } else {
                 $('.scoreRow').removeClass("Chosen");
                 $(this).addClass("Chosen");
+                if(window.innerWidth < 800){
+                    $('#leaderRows').hide();
+                }
                 showPanel(this);
             }
         });
@@ -115,12 +121,14 @@ function showPanel(selected){
     for(var x = 0; x < info.length; x++){
         if(info[x].key+info[x].role == chosen){
             $('#dataPanel').css('background-image',"url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+info[x].key+"_0.jpg')");
-            //buildPanel += "<div id='dataPic'><img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png'></div>";
-             buildPanel += "<div id='dataContainer' onclick='hidePanel();'>";
-                buildPanel += "<div id='close'>X</div>";
+             buildPanel += "<div id='dataContainer'>";
+                buildPanel += "<div id='close' onclick='hidePanel();'>X</div>";
                 buildPanel += "<div id='dataHeader'>";
-                    buildPanel += "<h1 id='panelChar'>"+info[x].name+"</h1>";
-                    buildPanel += "<h2 id='panelRole'>"+info[x].role+"</h2>";
+                    buildPanel += "<div id='dataPic'><img src='http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+info[x].key+".png'></div>";
+                    buildPanel += "<div id='charInfo'>";
+                        buildPanel += "<h1 id='panelChar'>"+info[x].name+"</h1>";
+                        buildPanel += "<h2 id='panelRole'>"+info[x].role+"</h2>";
+                    buildPanel += "</div>";
                 buildPanel += "</div>";
                 buildPanel += "<div id='KDATable'>";
                     buildPanel += "<div class='infoRow'>";
@@ -321,6 +329,9 @@ function hidePanel(){
     $('.scoreRow').removeClass("Chosen");
     var chosen = $('.Chosen').html();
     $('#dataPanel').css('display','none');
+    if(window.innerWidth < 800 || $('#leaderRows').css('display') == 'none'){
+        $('#leaderRows').show(); //find a way for this to only be enabled if screen width <= 800px?
+    }
 }
 
 function setView(selection){

@@ -21,6 +21,7 @@ body {
   	background-size: cover;
 }
 #leaderView {
+    position: relative;
     font-family: 'Raleway', sans-serif;
     text-align: center;
     font-weight: 600;
@@ -131,7 +132,7 @@ nav a.active:after {
 .scoreRow {
     display: block;
     position: relative;
-    width: 400px;
+    max-width: 400px;
     height: 35px;
     line-height: 35px;
     margin: 0 0 10px 0;
@@ -140,7 +141,7 @@ nav a.active:after {
     color: #eee;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
-    font-size: 24;
+    font-size: 20;
     box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
 }
 
@@ -210,8 +211,8 @@ img {
     background-color: #504444;
     color: #eee;
     box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
-    height: 475px;
-    width: 450px;
+    min-height: 475px;
+    max-width: 450px;
     vertical-align: middle;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
@@ -228,12 +229,18 @@ img {
     cursor: pointer;
 
 }
+#close:hover {
+    color: #519D9E;
+}
 #dataPic {
     width: 70px;
     height: 70px;
     display: inline-block;
 }
-
+#charInfo{
+    vertical-align: top;
+    display: inline-block;
+}
 #dataPanel h1, #dataPanel h2 {
     margin: 0px 0;
     padding-left: 15px;
@@ -246,7 +253,7 @@ img {
 }
 
 #dataContainer {
-    height: 475px;
+    min-height: 475px;
     background-color: rgba(31,27,27,.75);
 }
 
@@ -264,7 +271,7 @@ img {
 
 .infoRow {
     display: table-row;
-    width: 200%;
+    width: 100%;
 }
 
 .Title {
@@ -307,14 +314,14 @@ canvas {
 .infoRow .canvasCont {
   position: relative;
   display: inline-block;
-  height: 200px;
+  min-height: 200px;
   width: 225px;
 }
 
 #percRow .canvasCont {
   position: relative;
   display: inline-block;
-  height: 150px;
+  min-height: 150px;
   width: 150px;
 }
 
