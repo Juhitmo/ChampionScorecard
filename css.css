@@ -201,7 +201,7 @@ img {
     height: 0; 
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent; 
-    border-right: 20px solid #eee;
+    border-right: 15px solid #eee;
 }
 
 #dataPanel {

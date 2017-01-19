@@ -79,14 +79,15 @@ function createRows(){
         }
     }
     document.getElementById("leaderRows").innerHTML = buildRows;
+    $('#leaderRows').show();
 
     //change width of row depending on %
-    var pad = 50; //Math.floor(400 - (400*(highestVal/100)));
+    var pad = 100; //Math.floor(400 - (400*(highestVal/100)));
     var wid = 0;
 
     for (var key in charID){
         //alert("width: "+Math.floor(300*(charID[key]/100))+" added width: "+Math.floor(300 - (300*(highestVal/100))));
-        wid = Math.floor(350*(charID[key]/100)) + Math.floor(350 - (350*(highestVal/100)));
+        wid = Math.floor(300*(charID[key]/100)) + Math.floor(300 - (300*(highestVal/100)));
         $("#"+key).width(wid+pad);
         if((wid+pad) < 230){
             $("#"+key+"Perc").css("right", "-60");
