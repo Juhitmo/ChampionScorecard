@@ -143,8 +143,14 @@ nav a.active:after {
     font-weight: 600;
     font-size: 20;
     box-shadow: 0 3px 6px rgba(84,102,112,0.5), 0 3px 6px rgba(84,102,112,0.65);
+    border: 1px solid transparent
 }
-
+.scoreRow:hover
+{
+    border: solid;
+    border-color: #376A6B;
+    border-width: 1px;
+}
 .rowRole
 {
     font-family: 'Raleway', sans-serif;
